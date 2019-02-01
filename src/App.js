@@ -1,28 +1,50 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import styled from 'styled-components'
+
+import Header from './components/Header'
+import SearchBox from './components/SearchBox'
+import BeerCard from './components/BeerCard'
+
+const Content = styled.div`
+  position: relative;
+  /* top: calc(120px + 1rem);*/
+  top: 80px;
+  z-index: 100000000;
+`
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      loading: true,
+      beers: {}
+    }
+  }
+
+  async componentWillMount() {
+    // Fetch data from API
+    const data = await (await fetch('/beercraft')).json()
+    this.setState({
+      loading: false,
+      beers: data
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Header />
+        <SearchBox type="text" placeholder="Search" />
+        <Content>
+          {this.state.loading ? (
+            <p>loading...</p>
+          ) : (
+            this.state.beers.map(beer => <BeerCard beer={beer} />)
+          )}
+        </Content>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
