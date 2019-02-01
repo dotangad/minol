@@ -7,7 +7,6 @@ const BeerCard = styled.div`
   border: none;
   border-radius: 10px;
   margin: 20px auto;
-  // background: #f8f8f8;
   -webkit-box-shadow: 0px 0px 18px 2px rgba(0, 0, 0, 0.13);
   -moz-box-shadow: 0px 0px 18px 2px rgba(0, 0, 0, 0.13);
   box-shadow: 0px 0px 18px 2px rgba(0, 0, 0, 0.13);
@@ -34,38 +33,105 @@ const BeerDetailsTable = styled.table`
   border-collapse: collapse;
 `
 
-export default () => (
+const Buttons = styled.div`
+  display: flex;
+  height: 60px;
+  width: 100%;
+`
+
+const Button = styled.a`
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  width: 50%;
+  height: 100%;
+  background: #2977f5;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export default ({ beer, inCart, handleCart }) => (
   <BeerCard>
     <BeerImg
       src="https://www.telegraph.co.uk/content/dam/Food%20and%20drink/2015-09/01sep/beer-craft.jpg?imwidth=450"
       alt="pint glass of beer"
     />
     <BeerDetails>
-      <BeerName>Random Beer</BeerName>
+      <BeerName>{beer.name}</BeerName>
       <BeerDetailsTable>
         <tbody>
           <tr>
-            <td>ABV</td>
-            <td>0.2</td>
-          </tr>
-          <tr>
-            <td>IBU</td>
-            <td>0.8</td>
-          </tr>
-          <tr>
             <td>ID</td>
-            <td>1289</td>
+            <td>{beer.id}</td>
           </tr>
           <tr>
             <td>Style</td>
-            <td>American Pale Ale (APA)</td>
+            <td>{beer.style}</td>
           </tr>
           <tr>
             <td>Ounces</td>
-            <td>15</td>
+            <td>{beer.ounces}</td>
           </tr>
+          <tr>
+            <td>ABV</td>
+            <td>{beer.abv}</td>
+          </tr>
+          {beer.ibu ? (
+            <tr>
+              <td>IBU</td>
+              <td>{beer.ibu}</td>
+            </tr>
+          ) : (
+            ''
+          )}
         </tbody>
       </BeerDetailsTable>
     </BeerDetails>
+    <Buttons>
+      <Button
+        style={{ borderRadius: '0 0 0 10px' }}
+        onClick={() => handleCart(beer.id)}
+      >
+        {inCart ? (
+          <>
+            <i
+              style={{
+                marginRight: '5px',
+                fontsize: '0.8rem'
+              }}
+              className="fas fa-shopping-cart"
+            />
+            Add to cart
+          </>
+        ) : (
+          <>
+            <i
+              style={{
+                marginRight: '5px',
+                fontsize: '0.8rem'
+              }}
+              className="fas fa-times"
+            />
+            Remove from cart
+          </>
+        )}
+      </Button>
+      <Button
+        style={{
+          borderRadius: '0 0 10px 0',
+          background: '#3281FF'
+        }}
+      >
+        More Info
+        <i
+          style={{
+            marginLeft: '5px',
+            fontSize: '1rem'
+          }}
+          className="fas fa-angle-right"
+        />
+      </Button>
+    </Buttons>
   </BeerCard>
 )
