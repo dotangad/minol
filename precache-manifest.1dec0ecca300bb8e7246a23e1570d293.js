@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/minol/static/js/runtime~main.49a00b2f.js"
   },
   {
-    "revision": "b7bc995c5f96f7965b4d",
-    "url": "/minol/static/js/main.b7bc995c.chunk.js"
+    "revision": "ec35813f2a6696960b9c",
+    "url": "/minol/static/js/main.ec35813f.chunk.js"
   },
   {
     "revision": "1d183de65c855e050cda",
     "url": "/minol/static/js/1.1d183de6.chunk.js"
   },
   {
-    "revision": "b7bc995c5f96f7965b4d",
+    "revision": "ec35813f2a6696960b9c",
     "url": "/minol/static/css/main.ef22e58d.chunk.css"
   },
   {
-    "revision": "b1781702d321724a3aeb580b25b63ab3",
+    "revision": "80a9a689c70fcd485430a4021b89a440",
     "url": "/minol/index.html"
   }
 ];
