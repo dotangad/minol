@@ -2,7 +2,7 @@
   "name": "minol",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://starlord.hackerearth.com/",
+  "homepage": "https://angadsingh.co/minol",
   "dependencies": {
     "react": "^16.7.0",
     "react-dom": "^16.7.0",

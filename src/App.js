@@ -26,7 +26,7 @@ class App extends Component {
 
   async componentWillMount() {
     // Fetch data from API
-    const data = await (await fetch('/beers.json')).json()
+    const data = await (await fetch('beers.json')).json()
 
     this.setState({
       loading: false,
